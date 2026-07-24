@@ -13,6 +13,7 @@ find_package(rclcpp REQUIRED)   #直接查找到对应的头文件和库文件
 # find_package(<dependency> REQUIRED)
 
 add_executable(cpp_node src/cpp_node.cpp)
+add_executable(learn_shared_ptr src/learn_shared_ptr.cpp)
 
 #message(STATUS ${rclcpp_INCLUDE_DIRS})    #头文件及rclcpp依赖的头文件
 #message(STATUS ${rclcpp_LIBRARIES})       #库文件及rclcpp依赖的库文件
@@ -20,7 +21,8 @@ add_executable(cpp_node src/cpp_node.cpp)
 #target_include_directories(cpp_node PUBLIC ${rclcpp_INCLUDE_DIRS})    #头文件包含
 #target_link_libraries(cpp_node ${rclcpp_LIBRARIES})                   #库文件链接
 ament_target_dependencies(cpp_node rclcpp)    #包含头文件和链接库文件
-install(TARGETS cpp_node
+ament_target_dependencies(learn_shared_ptr rclcpp)
+install(TARGETS cpp_node learn_shared_ptr
   DESTINATION lib/${PROJECT_NAME}
 )
 

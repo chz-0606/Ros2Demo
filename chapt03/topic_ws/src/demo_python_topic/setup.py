@@ -1,6 +1,6 @@
 from setuptools import find_packages, setup
 
-package_name = 'demo_python_pkg'
+package_name = 'demo_python_topic'
 
 setup(
     name=package_name,
@@ -24,9 +24,6 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'python_node = demo_python_pkg.python_node:main',   #python_node是可执行文件的名字，demo_python_pkg.python_node:main是demo_python_pkg文件夹下python_node.py文件中的main函数
-            'learn_thread = demo_python_pkg.learn_thread:main',   #learn_thread是可执行文件的名字，demo_python_pkg.learn_thread:main是demo_python_pkg文件夹下learn_thread.py文件中的main函数
         ],
     },
 )
-
