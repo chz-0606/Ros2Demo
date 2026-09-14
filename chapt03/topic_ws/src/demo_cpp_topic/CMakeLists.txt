@@ -13,7 +13,9 @@ find_package(turtlesim REQUIRED)
 find_package(rclcpp REQUIRED)
 
 add_executable(turtle_circle src/turtle_circle.cpp)
+add_executable(turtle_control src/turtle_control.cpp)
 ament_target_dependencies(turtle_circle rclcpp geometry_msgs turtlesim)
+ament_target_dependencies(turtle_control rclcpp geometry_msgs turtlesim)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -28,7 +30,7 @@ if(BUILD_TESTING)
 endif()
 
 install(TARGETS
-  turtle_circle
+  turtle_circle turtle_control
   DESTINATION lib/${PROJECT_NAME}
   )
 
