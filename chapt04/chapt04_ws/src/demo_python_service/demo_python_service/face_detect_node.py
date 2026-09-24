@@ -22,7 +22,7 @@ class FaceDetectNode(Node):
     def face_detect_callback(self, request, response):
         if request.image.data:
             # 将ROS图像消息转换为OpenCV图像
-            cv_image = self.bridge.imgmsg_to_cv2(request.image_data, desired_encoding='bgr8')
+            cv_image = self.bridge.imgmsg_to_cv2(request.image, desired_encoding='bgr8')
         else:
             # 如果没有提供图像数据，则使用默认图像
             self.get_logger().info('没有提供图像数据，使用默认图像进行人脸检测。')
