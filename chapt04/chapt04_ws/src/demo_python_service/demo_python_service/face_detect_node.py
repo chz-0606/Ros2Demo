@@ -7,6 +7,7 @@ from ament_index_python.packages import get_package_share_directory  #获取功�
 import os
 from cv_bridge import CvBridge
 import time
+from rcl_interfaces.msg import SetParametersResult
 
 class FaceDetectNode(Node):
     def __init__(self):
@@ -14,10 +15,20 @@ class FaceDetectNode(Node):
         self.service = self.create_service(FaceDetector, 'face_detect', self.face_detect_callback)
         self.bridge = CvBridge()
         self.get_logger().info('Face Detect Service is ready.')
-        self.number_of_times_to_upsample = 1  # 设置人脸检测的上采样次数
-        self.model = 'hog'  # 设置人脸检测的模型
+        self.declare_parameters('number_of_times_to_upsample', 1)
+        self.number_of_times_to_upsample = self.get_parameter('number_of_times_to_upsample').value  # 设置人脸检测的上采样次数
+        self.declare_parameters('model', 'hog')
+        self.model = self.get_parameter('model').value  # 设置人脸检测的模型
         self.default_image_path = os.path.join(get_package_share_directory('demo_python_service'), 'resource', 'default.jpg')  # 设置默认图像路径
+        self.add_on_set_parameters_callback(self.parameters_callback)  # 添加参数回调函数
 
+    def parameters_callback(self, parameters):
+        for param in parameters:
+            if param.name == 'number_of_times_to_upsample':
+                self.number_of_times_to_upsample = param.value
+            elif param.name == 'model':
+                self.model = param.value
+        return SetParametersResult(successful=True)
 
     def face_detect_callback(self, request, response):
         if request.image.data:
