@@ -16,6 +16,9 @@ find_package(tf2_geometry_msgs REQUIRED)
 add_executable(static_tf_broadcaster src/static_tf_broadcaster.cpp)
 ament_target_dependencies(static_tf_broadcaster rclcpp tf2_ros geometry_msgs tf2_geometry_msgs)
 
+add_executable(dynamic_tf_broadcaster src/dynamic_tf_broadcaster.cpp)
+ament_target_dependencies(dynamic_tf_broadcaster rclcpp tf2_ros geometry_msgs tf2_geometry_msgs)
+
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -28,7 +31,7 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
-install(TARGETS static_tf_broadcaster
+install(TARGETS static_tf_broadcaster dynamic_tf_broadcaster
 DESTINATION lib/${PROJECT_NAME}
 )
 
