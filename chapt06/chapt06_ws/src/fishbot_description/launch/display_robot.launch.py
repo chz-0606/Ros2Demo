@@ -13,7 +13,7 @@ def generate_launch_description():
         description='加载的模型文件路径'
     )
     #通过文件路径，加载urdf文件内容，并传递给robot_state_publisher节点
-    urdf_content = launch.substitutions.Command(['cat ', launch.substitutions.LaunchConfiguration('urdf_path')])
+    urdf_content = launch.substitutions.Command(['xacro ', launch.substitutions.LaunchConfiguration('urdf_path')])
     urdf_param = launch_ros.parameter_descriptions.ParameterValue(urdf_content, value_type=str)
 
     action_robot_state_publisher = launch_ros.actions.Node(
