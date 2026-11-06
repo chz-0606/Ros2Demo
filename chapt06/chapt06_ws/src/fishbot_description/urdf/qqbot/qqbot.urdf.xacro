@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="qqbot">
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/base.urdf.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/imu.urdf.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/camera.urdf.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/laser.urdf.xacro"/>
+
+    <!-- 机器人身体 -->
+    <xacro:base_xacro length="0.12" radius="0.1"/>
+
+    <!-- 机器人IMU -->
+    <xacro:imu_xacro xyz="0 0 0.02"/>
+
+    <!-- 机器人摄像头 -->
+    <xacro:camera_xacro xyz="0.10 0 0.075"/>
+
+    <!-- 机器人雷达 -->
+    <xacro:laser_xacro xyz="0 0 0.10"/>
+</robot>
