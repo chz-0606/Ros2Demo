@@ -4,6 +4,8 @@
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/imu.urdf.xacro"/>
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/camera.urdf.xacro"/>
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/sensor/laser.urdf.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/actuator/wheel.urdf.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/actuator/caster.urdf.xacro"/>
 
     <!-- 机器人身体 -->
     <xacro:base_xacro length="0.12" radius="0.1"/>
@@ -16,4 +18,13 @@
 
     <!-- 机器人雷达 -->
     <xacro:laser_xacro xyz="0 0 0.10"/>
+
+    <!-- 机器人轮子 -->
+    <xacro:wheel_xacro wheel_name= "wheel_left" xyz="0 0.10 -0.06"/>
+    <xacro:wheel_xacro wheel_name= "wheel_right" xyz="0 -0.10 -0.06"/>
+
+    <!-- 机器人万向轮 -->
+    <xacro:caster_xacro caster_name= "caster_front" xyz="0.08 0.0 -0.076"/>
+    <xacro:caster_xacro caster_name= "caster_back" xyz="-0.08 0.0 -0.076"/>
+
 </robot>
