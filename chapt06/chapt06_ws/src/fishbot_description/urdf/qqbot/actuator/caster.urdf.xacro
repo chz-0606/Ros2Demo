@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/common_inertial.xacro"/>
+
     <xacro:macro name="caster_xacro" params="caster_name xyz">
         <!-- 机器人的WHEEL部件 -->
         <link name="${caster_name}_link">
@@ -14,6 +16,19 @@
                     <color rgba="1.0 1.0 0 0.8"/>
                 </material>
             </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                   <geometry>
+                    <sphere radius="0.016"/>
+                   </geometry>
+                </geometry>
+                <material name="yellow">
+                    <color rgba="1.0 1.0 0 0.8"/>
+                </material>
+            </collision>
+
+            <xacro:sphere_inertia m="0.05" r="0.016" />
         </link>
         <!-- 机器人的关节 -->
         <joint name="${caster_name}_joint" type="fixed">
