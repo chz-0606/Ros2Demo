@@ -7,11 +7,9 @@
         <link name="${caster_name}_link">
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
-                <geometry>
                    <geometry>
                     <sphere radius="0.016"/>
                    </geometry>
-                </geometry>
                 <material name="yellow">
                     <color rgba="1.0 1.0 0 0.8"/>
                 </material>
@@ -19,9 +17,7 @@
             <collision>
                 <origin xyz="0 0 0" rpy="0 0 0"/>
                 <geometry>
-                   <geometry>
                     <sphere radius="0.016"/>
-                   </geometry>
                 </geometry>
                 <material name="yellow">
                     <color rgba="1.0 1.0 0 0.8"/>
