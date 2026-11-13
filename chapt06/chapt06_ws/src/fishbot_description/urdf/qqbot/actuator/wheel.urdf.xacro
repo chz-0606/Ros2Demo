@@ -33,6 +33,13 @@
             <origin xyz="${xyz}" rpy="0 0 0"/>
             <axis xyz="0.0 1.0 0.0"/>
         </joint>
+        <gazebo reference="${wheel_name}_link">
+            <material>Gazebo/Yellow</material>
+            <mu1>20.0</mu1>
+            <mu2>20.0</mu2>
+            <kp>10000000000.0</kp>
+            <kd>1.0</kd>
+        </gazebo>
     </xacro:macro>
 
     </robot>
