@@ -7,6 +7,7 @@
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/actuator/wheel.urdf.xacro"/>
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/actuator/caster.urdf.xacro"/>
     <xacro:include filename="$(find fishbot_description)/urdf/qqbot/plugins/gazebo_control_plugin.xacro"/>
+    <xacro:include filename="$(find fishbot_description)/urdf/qqbot/plugins/gazebo_sensor_plugin.xacro"/>
 
     <!-- 机器人身体 -->
     <xacro:base_xacro length="0.12" radius="0.1"/>
@@ -30,4 +31,5 @@
 
     <!-- Gazebo插件 -->
     <xacro:gazebo_control_plugin/>
+    <xacro:gazebo_sensor_plugin/>
 </robot>
