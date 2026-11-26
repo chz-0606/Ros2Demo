@@ -40,11 +40,33 @@ def generate_launch_description():
         output='screen'
     )
     
+    action_load_joint_state_controller = launch.actions.ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'qqbot_joint_state_broadcaster'],
+        output='screen'
+    )
+
+    action_load_effort_controller = launch.actions.ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'qqbot_effort_controllers'],
+            output='screen'
+        )
+
     return launch.LaunchDescription([
         action_declare_urdf_path_cmd,
         action_robot_state_publisher,
         action_launch_gazebo,
-        action_spawn_entity
+        action_spawn_entity,
+        launch.actions.RegisterEventHandler(
+            launch.event_handlers.OnProcessExit(
+                target_action=action_spawn_entity,
+                on_exit=[action_load_joint_state_controller],
+            )
+        ),
+        launch.actions.RegisterEventHandler(
+            launch.event_handlers.OnProcessExit(
+                target_action=action_load_joint_state_controller,
+                on_exit=[action_load_effort_controller],
+            )
+        ),
     ])
 
             

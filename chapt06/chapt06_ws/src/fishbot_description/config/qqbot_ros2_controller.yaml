@@ -2,3 +2,20 @@ controller_manager:
   ros__parameters:
     update_rate: 100
     use_sim_time: true
+
+    qqbot_joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+    qqbot_effort_controllers:
+      type: effort_controllers/JointGroupEffortController
+      
+qqbot_effort_controllers:
+  ros__parameters:
+    joints:
+      - wheel_left_joint
+      - wheel_right_joint
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+      - effort
