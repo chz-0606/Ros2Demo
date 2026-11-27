@@ -45,10 +45,15 @@ def generate_launch_description():
         output='screen'
     )
 
-    action_load_effort_controller = launch.actions.ExecuteProcess(
-            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'qqbot_effort_controllers'],
-            output='screen'
-        )
+    #action_load_effort_controller = launch.actions.ExecuteProcess(
+    #        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'qqbot_effort_controllers'],
+    #        output='screen'
+    #    )
+
+    action_load_diff_drive_controller = launch.actions.ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'qqbot_diff_drive_controller'],
+        output='screen'
+    )
 
     return launch.LaunchDescription([
         action_declare_urdf_path_cmd,
@@ -64,7 +69,7 @@ def generate_launch_description():
         launch.actions.RegisterEventHandler(
             launch.event_handlers.OnProcessExit(
                 target_action=action_load_joint_state_controller,
-                on_exit=[action_load_effort_controller],
+                on_exit=[action_load_diff_drive_controller],
             )
         ),
     ])
